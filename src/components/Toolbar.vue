@@ -22,7 +22,7 @@
 			<ul class="items">
 				<li v-on:click="redirigeHome()">Home</li>
 				<li v-on:click="redirigeHome()">Habilidades</li>
-				<li>Cerrar sesión</li>
+				<li v-on:click="cierraSesion()">Cerrar sesión</li>
 				<li class="modo">Modo oscuro</li>
 			</ul>
 
@@ -142,11 +142,14 @@
 
 			redirigeHome(){
 
-				this.$router.push('home');
+				
+				this.$router.push({name:'Home'});
 			},
 
 			cierraSesion(){
 
+				localStorage.setItem('isAutenticade', false);
+				this.$router.push({name:'Login'});
 
 			},
 

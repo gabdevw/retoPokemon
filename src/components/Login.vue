@@ -80,6 +80,7 @@ import Registro from '@/components/Registro';
 			firebase.auth().signInWithEmailAndPassword(this.user,this.pass)
 		.then(user=>{
 			console.log(user)
+			localStorage.setItem('isAutenticade', true);
 			this.$router.push({name:'Home'});
 		}).catch(err => {
 			console.log(err);
@@ -96,6 +97,15 @@ import Registro from '@/components/Registro';
 				$('#modalRegistro').modal('show');
 
 			}
+		},
+
+		created(){
+
+			if (localStorage.getItem('isAutenticade')=='true') {
+			console.log("ingresa alogin?")
+			this.$router.push({name:'Home'});	
+		}
+
 		},
 
 

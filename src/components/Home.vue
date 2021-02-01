@@ -84,6 +84,15 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
 
 	created(){
 
+		console.log("antes del if")
+		console.log(localStorage.getItem('isAutenticade'))
+		if (localStorage.getItem('isAutenticade')!='true') {
+			console.log("ingresa alogin?")
+			this.$router.push({name:'Login'});	
+		}else{
+
+			console.log("despues del if")
+		}
 		// this.getTipoPokemones();
 	}
 	}
