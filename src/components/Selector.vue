@@ -4,7 +4,7 @@
 			
 		<select class="form-control form-control-sm" v-model="pokemonSeleccionado">
             
-            <option v-for="pokemon in datosPokemones.results" v-bind:key="pokemon.id" v-bind:value="pokemon.value">
+            <option v-for="pokemon in datosPokemones.results" v-bind:key="pokemon.url" v-bind:value="pokemon.url">
                                  
                     {{ pokemon.name}}
                    
@@ -43,6 +43,13 @@ import axios from 'axios';
             })
               .then((res)=> {
                this.datosPokemones=res.data;
+               console.log("olaaaaaaa")
+               console.log(this.datosPokemones)
+
+               if(this.datosPokemones.results.length>0){
+                this.pokemonSeleccionado=this.datosPokemones.results[0].url;
+              }
+
                console.log(res.data)
         
               }).catch(function(err)
@@ -67,11 +74,17 @@ import axios from 'axios';
 		created(){
 
 			this.getTipoPokemones();
+			
 		
 		},
 
 
 		watch:{
+			pokemonSeleccionado: function(){
+				console.log("lo que sea ------")
+				console.log(this.pokemonSeleccionado)
+				this.$emit("filtrar", this.pokemonSeleccionado)
+			}
 
 
 		}

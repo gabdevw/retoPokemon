@@ -1,14 +1,12 @@
 <template>
 	<div class="">
     
-	<div v-for="pokemon in optionsPokemon.results" :key="pokemon.id" v-bind:value="pokemon.value" class="card">
-
 		<div class="datos">
 			<div class="picture">
-				<img src="https://e7.pngegg.com/pngimages/30/941/png-clipart-pokemon-pokemon.png" class="img-fluid">
+				<img :src="imagen" class="img-fluid">
 			</div>
 			<div class="data">
-				<span class="titulosCard">{{pokemon.name}}</span>
+				<span class="titulosCard">{{pokemon.pokemon.name}}</span>
 				<br>
 				<span class="subtitulosCard">Descripción</span>
 				<br>
@@ -17,7 +15,7 @@
 				<br>
 				<span class="subtitulosCard">Habilidades</span>
 				<br>
-				<span class="infoCard">{{pokemon.habilidad}}</span>
+				<span class="infoCard">{{habilidades}}</span>
 			</div>
 
 			<div class="clearfix"></div>
@@ -33,7 +31,7 @@
 	<div class="clearfix"></div>
 
 
-	</div>
+	
 
 
 <!-- </div> -->
@@ -41,17 +39,19 @@
 </template>
 
 <script>
-// import axios from 'axios';
-import pokemonService from '@/services/pokemonService';
+import axios from 'axios';
 
 	export default{
 		name: 'Cards',
+		props:['pokemon'],
 
 		data () {
 
 			return {
 
-				optionsPokemon:{results:[]}, 
+				optionsPokemon:[], 
+				habilidades:[],
+				imagen:'',
 
 				}
 			},
@@ -59,35 +59,42 @@ import pokemonService from '@/services/pokemonService';
 		methods:{
 
 
-		getTipoPokemones = async () =>{
-
-        this.optionsPokemon=pokemonService.getTipoPokemones();
-        console.log("que hay?----------------")
-        console.log(this.optionsPokemon)  
-        //   var contexto=this;
-        //   axios.get(this.$hostname+'/api/v2/pokemon?offset=20&limit=20',{
-        //     })
-        //       .then((res)=> {
-        //        this.optionsPokemon=res.data;
-        //        console.log(res.data)
+		getDatosPokemon: function(){
+          
+          var contexto=this;
+          axios.get(this.pokemon.pokemon.url,{
+            })
+              .then((res)=> {
+               this.optionsPokemon=res.data;
+               this.imagen=res.data.sprites.front_default;
+               console.log(res.data)
         
-        //       }).catch(function(err)
-        //         {
-        //           console.log(err);
-        //           if(err.response.status==403){
-        //           contexto.$alert("Por su seguridad, la sesion ha expirado");
-        //   }else{
-        //     console.log("otra cosa");
-        //   }
-        //   console.log(err);
+              }).catch(function(err)
+                {
+                  console.log(err);
+                  if(err.response.status==403){
+                  contexto.$alert("Por su seguridad, la sesion ha expirado");
+          }else{
+            console.log("otra cosa");
+          }
+          console.log(err);
         
-        // });
+        });
       },
 		},
 
-	async created(){
+	created(){
+			this.getDatosPokemon();
 
-		await this.optionsPokemon = pokemonServices.getTipoPokemones();
+		// this.getTipoPokemones();
+	},
+	watch:{
+
+		pokemon: function(){
+
+			console.log("obteniendo datos de poke")
+		}
+
 	}
 
 		}

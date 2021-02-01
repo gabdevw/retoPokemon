@@ -1,14 +1,19 @@
 <template>
 	<div class="">
 		<Toolbar></Toolbar>
-		<Selector></Selector>
+		<Selector @filtrar="getTipoPokemones"></Selector>
 
 		<div class="clearfix"></div>
 		
 			
 		<div class="contenedorCards">
-			
-		<Cards></Cards>
+		
+		<div v-for="pokemon in optionsPokemon.pokemon" :key="pokemon.id" v-bind:value="pokemon.value" class="card">
+		
+		<Cards :pokemon="pokemon"></Cards>
+		
+	</div>
+
 		</div>
 
 
@@ -22,6 +27,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Toolbar from '@/components/Toolbar';
 import Selector from '@/components/Selector';
 import Cards from '@/components/Cards';
@@ -32,7 +38,7 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
 		data () {
 
 			return {
-
+				optionsPokemon:[],
 				user:null,
 				modoOscuro:false
 
@@ -45,7 +51,41 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
 			Cards,
 			TablaPokemonSeleccionado
 
-		}
+		},
+
+	methods:{
+
+
+		getTipoPokemones: function(url){
+          
+          var contexto=this;
+          console.log("sasdaaaaaaaaaaaaaaaa")
+          console.log(url)
+          axios.get(url,{
+            })
+              .then((res)=> {
+               this.optionsPokemon=res.data;
+               console.log("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
+               console.log(res.data)
+        
+              }).catch(function(err)
+                {
+                  console.log(err);
+                  if(err.response.status==403){
+                  contexto.$alert("Por su seguridad, la sesion ha expirado");
+          }else{
+            console.log("otra cosa");
+          }
+          console.log(err);
+        
+        });
+      },
+		},
+
+	created(){
+
+		// this.getTipoPokemones();
+	}
 	}
 
 </script>
