@@ -83,6 +83,7 @@ import Registro from '@/components/Registro';
 			localStorage.setItem('isAutenticade', true);
 			this.$router.push({name:'Home'});
 		}).catch(err => {
+			alert("error verifique campos")
 			console.log(err);
 		});
         

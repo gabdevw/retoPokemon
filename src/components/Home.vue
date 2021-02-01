@@ -17,6 +17,11 @@
 		</div>
 
 
+	
+
+
+
+
 		<div class="tablaPokemonSeleccionado">
 			
 		<TablaPokemonSeleccionado></TablaPokemonSeleccionado>
@@ -27,6 +32,7 @@
 </template>
 
 <script>
+
 import axios from 'axios';
 import Toolbar from '@/components/Toolbar';
 import Selector from '@/components/Selector';
@@ -38,6 +44,7 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
 		data () {
 
 			return {
+				
 				optionsPokemon:[],
 				user:null,
 				modoOscuro:false
@@ -59,13 +66,13 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
 		getTipoPokemones: function(url){
           
           var contexto=this;
-          console.log("sasdaaaaaaaaaaaaaaaa")
+          
           console.log(url)
           axios.get(url,{
             })
               .then((res)=> {
                this.optionsPokemon=res.data;
-               console.log("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
+               
                console.log(res.data)
         
               }).catch(function(err)

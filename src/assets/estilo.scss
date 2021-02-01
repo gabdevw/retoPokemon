@@ -1,17 +1,12 @@
-.todo{
-
-	width: 100%;
-
-}
-
 
 .tablaPokemonSeleccionado{
 	margin-bottom: 20px;
 	padding-left:10px;
 	margin-right: 10px;
 	width: 23%;
-	// display: flex;
-	float: left;
+	// height: 250px;
+	display: flex;
+	// float: left;
 	border-radius:10px;
 	background-color:rgba(91,191,255,.4);
 	border: 1px solid white;
@@ -41,6 +36,7 @@
 	// width: 100%;
 	cursor: pointer;
 	color: white;	
+	text-align: center;
 
 }
 
@@ -377,8 +373,8 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 	padding-left:10px;
 	margin-right: 10px;
 	width: 50%;
-	// display: flex;
-	float: left;
+	display: flex;
+	// float: left;
 	border-radius:10px;
 	background-color:rgba(91,191,255,.4);
 	border: 1px solid white;

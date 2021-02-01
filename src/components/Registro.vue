@@ -21,7 +21,7 @@
 		<input type="password" id="passId" v-model="user.password" class="form-control">
 
 		<label class="espacioUp" for="">Confirma contraseña:</label>
-		<input type="password" id="passId" v-model="user.passwordConfirma" class="form-control">
+		<input type="password" id="passConfirmaId" v-model="user.passwordConfirma" class="form-control">
 	
 
       </div>
@@ -73,6 +73,7 @@ var $=require('jquery')
 
 		$('#emailId').removeClass("campoObligatorio");
 		$('#passId').removeClass("campoObligatorio");
+		$('#passConfirmaId').removeClass("campoObligatorio");
 
 
 		if (this.user.email==null) { 
@@ -85,15 +86,30 @@ var $=require('jquery')
         // $('#passId').addClass("campoObligatorio");  
         $('#passId').focus();
 
+        }else if (this.user.passwordConfirma==null) { 
+
+        // $('#passId').addClass("campoObligatorio");  
+        $('#passConfirmaId').focus();
+
+        }else if (this.user.passwordConfirma!=this.user.password) { 
+
+        // $('#passId').addClass("campoObligatorio");  
+        $('#passConfirmaId').focus();
+
         }else{
 			console.log("enviando formulariooo");
             console.log(this.user)
 			console.log("enviando formulario");
 		firebase.auth().createUserWithEmailAndPassword(this.user.email,this.user.password)
+
+
 		.then(user=>{
+			alert("Registrado exitosamente")
+			this.cancelar();
 			console.log(user)
 		}).catch(err => {
 			console.log(err);
+			alert("Error verifique los campos")
 		});
         }
 
