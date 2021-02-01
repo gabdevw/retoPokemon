@@ -1,0 +1,1017 @@
+.todo{
+
+	width: 100%;
+
+}
+
+
+.tablaPokemonSeleccionado{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	width: 23%;
+	// display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:rgba(91,191,255,.4);
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+
+.titulosCardPokemon{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+	color: white;	
+	font-family: 20px;
+	font-weight: 600;
+}
+
+.tablaPokemones{
+
+	// width: 100%;
+	cursor: pointer;
+	color: white;	
+
+}
+
+.listadoPokemon{
+	margin: 0 auto;
+	width: 80%;
+	padding: 5px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-bottom:15px;
+	cursor: pointer;
+	border: 1px solid white;
+	border-radius:5px;
+	text-align: center;
+
+			 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.listadoPokemon:hover{
+
+		 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+-webkit-box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
+box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
+
+
+}
+
+
+/**************************************/
+
+.detallePokemon{
+	padding: 5px;
+	padding-left:10px;
+	padding-right:10px;
+	cursor: pointer;
+	border: 1px solid white;
+	border-radius:5px;
+}
+
+.opcionesElegir{
+
+	text-align: center;
+	padding-bottom:20px;
+	padding-top:10px;
+}
+
+.seleccionaPokemon{
+
+	margin-right: 60px;
+	cursor: pointer;
+}
+
+.titulosCard{
+	font-size: 20px;
+	color: white;
+	font-weight: 600;
+
+}
+
+.subtitulosCard{
+
+	font-size: 16px;
+	color: white;
+	font-weight: 600;
+}
+
+.infoCard{
+	font-size: 12px;
+	color: white;
+
+
+}
+
+.picture{
+	padding:5px;
+	float: left;
+	width: 48%;
+}
+
+.data{
+	width: 48%;
+	float: left;
+	padding-left:15px;
+	padding-right:10px;
+	padding-top:5px;
+	padding-bottom:10px;	
+}
+.contenedorCards{
+
+	background-color:red;
+	width: 73%;
+	padding-left:40px;
+}
+
+.card{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	width: 32%;
+	display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:transparent;
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.card:hover{
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+-webkit-box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
+box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
+
+}
+
+.selectorPokemones{
+
+	width: 100%;
+	height: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+}
+
+.selector{
+	margin: 0 auto;
+	width: 25%;
+}
+
+.toolbar{
+
+	width: 100%;
+	background-color:#003179;
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid white;
+
+}
+
+.menuResponsive{
+	display: none;
+	background-color:#003179;
+	color: white;
+	width: 100%;
+	height: calc(100vh - 90px);
+
+}
+
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+
+
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+.userTagRes, .homeTag, .habilidadesTag, .cerrarSesionTag, .modoRes{
+	display: none;
+	margin-top: 20px;
+	margin-left: 28px;
+	cursor: pointer;
+}
+
+
+.iconMenu{
+
+	display: none;
+	margin-left: 50px;
+	margin-top:15px;
+
+}
+
+.iconMenu:active{
+
+	
+	margin-left: 50px;
+	margin-top:15px;
+	width: 17px;
+	height: 17px;
+}
+
+
+.iconPerson{
+
+	font-size: 20px;
+}
+
+.userTag{
+
+	padding: 20px;
+	margin-left: 50px;
+	// font-size: 20px; 
+	font-weight: bold;
+}
+
+.logo{
+
+	padding:10px;
+	margin-left: 12%;
+}
+
+.items{
+
+	display: flex;
+	list-style: none;
+	margin-right: 50px;
+	font-weight: bold;
+}
+
+.items li{
+
+	margin-top: 20px;
+	margin-right: 15px;
+	cursor: pointer;
+
+}
+
+.modo{
+
+	background-color:white;
+	color:#004C6C;
+	padding-left:8px;
+	padding-right: 8px;
+	padding-bottom: 5px;
+	border-radius:5px;
+}
+
+.centrar{
+	text-align: center;
+}
+
+.loginBox{
+	margin: 0 auto;
+	margin-top: 140px;
+	width:16.6%; 
+}
+
+.espacioUp{
+	margin-top: 10px;
+}
+
+.espacioUp2{
+
+	margin-top: 40px;
+}
+
+.botonEnviar{
+	border-radius: 15px;	
+}
+
+.registro{
+	cursor: pointer;
+	margin-top: 20px;
+	border-radius:15px;
+}
+
+
+.campoObligatorio{
+
+	background-color:rgba(218,16,16, .5);
+
+}
+
+
+@media (min-width: 1200px) and (max-width: 1281px) {
+
+.seleccionaPokemon{
+
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+
+}
+
+@media (min-width: 960px) and (max-width: 1200px) {
+
+.seleccionaPokemon{
+
+	margin-right: 15px;
+	cursor: pointer;
+}
+
+.tablaPokemonSeleccionado{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	width: 50%;
+	// display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:rgba(91,191,255,.4);
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.seleccionaPokemon{
+
+	margin-right: 30px;
+	cursor: pointer;
+}
+.contenedorCards{
+
+	
+	width: 95%;
+	padding-left:20px;
+}
+
+.card{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	width: 48%;
+	display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:transparent;
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+
+
+.logo{
+
+	padding:10px;
+	margin-left: 0%;
+}
+
+.loginBox{
+	margin: 0 auto;
+	margin-top: 100px;
+	width:24.9%; 
+	}
+
+
+.menuResponsive{
+
+	display:block;
+	background-color:#003179;
+	color: white;
+	height: calc(100vh - 90px);
+
+}
+
+
+.animacion{
+
+    transition: all 1s ease;
+    opacity: 100;
+}
+
+
+.userTagRes, .homeTag, .habilidadesTag, .cerrarSesionTag, .modoRes{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 28px;
+}
+
+.toolbar{
+
+	width: 100%;
+	background-color:#003179;
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+
+.userTag{
+
+	padding: 20px;
+	margin-left: 10px;
+	
+	font-weight: bold;
+	display:flex; 
+}
+
+.userTag svg{
+	margin-right: 10px;
+}
+
+.userTagRes{
+
+	display: none;
+}
+
+.iconMenu{
+
+	display: flex;
+	margin-right: 30px;
+	margin-top: 15px;
+	cursor: pointer;
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.iconMenu:active{
+
+	
+	margin-left: 50px;
+	margin-top:17px;
+	width: 32px;
+	height: 32px;
+	
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+
+}
+
+.iconPerson{
+
+	font-size: 20px;
+}
+
+
+.logo{
+
+	padding:10px;
+}
+
+.items{
+
+	display: none;
+
+}
+
+
+}
+
+@media (min-width: 768px) and (max-width: 960px) {
+
+.tablaPokemonSeleccionado{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	width: 50%;
+	// display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:rgba(91,191,255,.4);
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.seleccionaPokemon{
+
+	margin-right: 30px;
+	cursor: pointer;
+}
+.contenedorCards{
+
+	
+	width: 95%;
+	padding-left:20px;
+}
+
+.card{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	width: 48%;
+	display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:transparent;
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+
+
+.logo{
+
+	padding:10px;
+	margin-left: 0%;
+}
+
+.loginBox{
+	margin: 0 auto;
+	margin-top: 100px;
+	width:24.9%; 
+	}
+
+
+.menuResponsive{
+
+	display:block;
+	background-color:#003179;
+	color: white;
+	height: calc(100vh - 90px);
+
+}
+
+
+.animacion{
+
+    transition: all 1s ease;
+    opacity: 100;
+}
+
+
+.userTagRes, .homeTag, .habilidadesTag, .cerrarSesionTag, .modoRes{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 28px;
+}
+
+.toolbar{
+
+	width: 100%;
+	background-color:#003179;
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+
+.userTag{
+
+	padding: 20px;
+	margin-left: 10px;
+	
+	font-weight: bold;
+	display:flex; 
+}
+
+.userTag svg{
+	margin-right: 10px;
+}
+
+.userTagRes{
+
+	display: none;
+}
+
+.iconMenu{
+
+	display: flex;
+	margin-right: 30px;
+	margin-top: 15px;
+	cursor: pointer;
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.iconMenu:active{
+
+	
+	margin-left: 50px;
+	margin-top:17px;
+	width: 32px;
+	height: 32px;
+	
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+
+}
+
+.iconPerson{
+
+	font-size: 20px;
+}
+
+
+.logo{
+
+	padding:10px;
+}
+
+.items{
+
+	display: none;
+
+}
+
+
+}
+
+
+@media (min-width: 550px) and (max-width: 768px) {
+
+.tablaPokemonSeleccionado{
+
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	margin-left:10%;
+	width: 80%;
+	// display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:rgba(91,191,255,.4);
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+
+
+.seleccionaPokemon{
+
+	margin-right: 30px;
+	cursor: pointer;
+}
+.contenedorCards{
+
+	
+	width: 100%;
+	padding-left:10px;
+}
+
+.card{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	width: 48%;
+	display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:transparent;
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.logo{
+
+	padding:10px;
+	margin-left: 0%;
+}
+
+.selector{
+	margin: 0 auto;
+	width: 50%;
+}
+
+
+.loginBox{
+	margin: 0 auto;
+	margin-top: 50px;
+	width:50%; 
+	}
+
+
+.menuResponsive{
+	display: inline-block;
+	background-color:#003179;
+	color: white;
+	height: calc(100vh - 90px);
+
+}
+
+.userTagRes, .homeTag, .habilidadesTag, .cerrarSesionTag, .modoRes{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 28px;
+}
+
+
+.toolbar{
+
+	width: 100%;
+	background-color:#003179;
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+
+.iconMenu{
+
+	display: flex;
+	margin-right: 20px;
+	margin-top: 15px;
+	cursor: pointer;
+
+	-webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.iconMenu:active{
+
+	
+	margin-left: 50px;
+	margin-top:17px;
+	width: 32px;
+	height: 32px;
+	
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+
+}
+
+
+.userTag{
+
+	display:none; 
+}
+
+.logo{
+
+	padding:10px;
+}
+
+.items{
+
+	display: none;
+
+}
+
+}
+@media (min-width: 300px) and (max-width: 550px) {
+
+.tablaPokemonSeleccionado{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	margin-left: 10px;
+	width: 90%;
+	// display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:rgba(91,191,255,.4);
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+.seleccionaPokemon{
+
+	margin-right: 40px;
+	cursor: pointer;
+}
+.contenedorCards{
+
+	
+	width: 100%;
+	padding-left:10px;
+}
+
+.card{
+	margin-bottom: 20px;
+	padding-left:10px;
+	margin-right: 10px;
+	width: 90%;
+	display: flex;
+	float: left;
+	border-radius:10px;
+	background-color:transparent;
+	border: 1px solid white;
+
+	-webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49); 
+	box-shadow: 0px 10px 13px -7px #000000, 0px 21px 13px -9px rgba(9,98,255,0.49);
+
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+
+.logo{
+
+	padding:10px;
+	margin-left: 0%;
+}
+
+
+.selector{
+	margin: 0 auto;
+	width: 90%;
+}
+
+
+	.loginBox{
+		margin: 0 auto;
+		margin-top: 30px;
+		width:90%; 
+	}
+
+
+.menuResponsive{
+	display: inline-block;
+	background-color:#003179;
+	color: white;
+	height: calc(100vh - 90px);
+
+}
+
+.userTagRes, .homeTag, .habilidadesTag, .cerrarSesionTag, .modoRes{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 28px;
+}
+
+	.toolbar{
+
+	width: 100%;
+	background-color:#003179;
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+
+.iconMenu{
+
+	display: flex;
+	margin-right: 15px;
+	margin-top: 15px;
+	cursor: pointer;
+
+	-webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+}
+
+
+.iconMenu:active{
+
+	
+	margin-left: 50px;
+	margin-top:17px;
+	width: 32px;
+	height: 32px;
+	
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+
+
+}
+
+
+.userTag{
+
+	display:none; 
+}
+
+.logo{
+
+	padding:10px;
+}
+
+.items{
+
+	display: none;
+
+}
+
+
+}
