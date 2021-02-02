@@ -12,10 +12,24 @@
 				<br>
 				<span class="infoCard">{{pokemon.descripcion}}</span>
 				<br>
-				<br>
+				
 				<span class="subtitulosCard">Habilidades</span>
 				<br>
-				<span class="infoCard">{{habilidades}}</span>
+				<div class="" v-for="habilidad in habilidades" :key="habilidad.url" v-bind:value="habilidad.url">
+					
+				<span class="infoCard">{{habilidad.ability.name}}</span>
+				<br>	
+				</div>
+				<br>
+				
+				<span class="subtitulosCard">Tipo</span>
+				<br>
+				<div class="" v-for="tipo in tipos" :key="tipo.id" v-bind:value="tipo.value">
+					
+				<span class="infoCard">{{tipo.type.name}}</span>
+				<br>	
+				</div>
+
 			</div>
 
 			<div class="clearfix"></div>
@@ -50,6 +64,7 @@ import axios from 'axios';
 			return {
 
 				optionsPokemon:[], 
+				tipos:[],
 				habilidades:[],
 				imagen:'',
 
@@ -67,8 +82,11 @@ import axios from 'axios';
               .then((res)=> {
                this.optionsPokemon=res.data;
                this.imagen=res.data.sprites.front_default;
-               console.log(res.data)
-        
+               this.habilidades=res.data.abilities;
+               this.tipos=res.data.types;
+               // console.log(res.data)
+               console.log("las habilidades son: ")
+               console.log(this.habilidades)
               }).catch(function(err)
                 {
                   console.log(err);

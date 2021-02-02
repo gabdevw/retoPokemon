@@ -10,17 +10,11 @@
 		
 		<div v-for="pokemon in optionsPokemon.pokemon" :key="pokemon.id" v-bind:value="pokemon.value" class="card">
 		
-		<Cards :pokemon="pokemon"></Cards>
+			<Cards :pokemon="pokemon"></Cards>
 		
-	</div>
-
 		</div>
 
-
-	
-
-
-
+		</div>
 
 		<div class="tablaPokemonSeleccionado">
 			

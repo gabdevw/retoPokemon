@@ -81,7 +81,7 @@ import axios from 'axios';
 
 		watch:{
 			pokemonSeleccionado: function(){
-				console.log("lo que sea ------")
+				
 				console.log(this.pokemonSeleccionado)
 				this.$emit("filtrar", this.pokemonSeleccionado)
 			}
