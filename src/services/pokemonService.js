@@ -2,16 +2,18 @@ import axios from 'axios';
 
 export default{
 
-	async getTipoPokemones: function(){
+getTipoPokemones: function(url){
           
           var contexto=this;
-          axios.get('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20',{
+          
+          console.log(url)
+          axios.get(url,{
             })
               .then((res)=> {
-               console.log("aqui es pokemonService")
+               this.optionsPokemon=res.data;
+               console.log("este servicio esta en home y trae ??")
                console.log(res.data)
-               return res.data;
-
+        
               }).catch(function(err)
                 {
                   console.log(err);
@@ -23,6 +25,15 @@ export default{
           console.log(err);
         
         });
+      },
+
+  getTipos: function(){
+          console.log("paso 2")
+          var contexto=this;
+          return axios.get('https://pokeapi.co/api/v2/type',{
+            
+            })
+      
       },
 
 

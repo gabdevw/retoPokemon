@@ -6,7 +6,7 @@
 		<div class="clearfix"></div>
 		
 			
-		<div class="contenedorCards">
+		<div v-if="isLoading==false" class="contenedorCards">
 		
 		<div v-for="pokemon in optionsPokemon.pokemon" :key="pokemon.id" v-bind:value="pokemon.value" class="card">
 		
@@ -15,7 +15,23 @@
 		</div>
 
 		</div>
+		<div class="container">
 
+		
+		<div>
+            <loading 
+            :active.sync="isLoading" 
+            :can-cancel="true" 
+            :on-cancel="onCancel"
+            :is-full-page="fullPage"
+            :loader="loader"
+            :color="color"
+            :background-color="fondo"
+            > 
+          </loading>
+      </div>
+
+	</div>
 		<div class="tablaPokemonSeleccionado">
 			
 		<TablaPokemonSeleccionado></TablaPokemonSeleccionado>
@@ -33,12 +49,18 @@ import Selector from '@/components/Selector';
 import Cards from '@/components/Cards';
 import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
 
+import Loading from 'vue-loading-overlay'
+
 	export default{
 
 		data () {
 
 			return {
-				
+				loader:'dots',
+      isLoading: false,
+      fullPage: true,
+      color:"#FFFFFF",
+      fondo:"#FFFFFF",
 				optionsPokemon:[],
 				user:null,
 				modoOscuro:false
@@ -50,7 +72,8 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
 			Toolbar,
 			Selector,
 			Cards,
-			TablaPokemonSeleccionado
+			TablaPokemonSeleccionado,
+			Loading
 
 		},
 
@@ -58,7 +81,7 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
 
 
 		getTipoPokemones: function(url){
-          
+          this.isLoading=true;
           var contexto=this;
           
           console.log(url)
@@ -66,9 +89,9 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
             })
               .then((res)=> {
                this.optionsPokemon=res.data;
-               
+               console.log("este servicio esta en home y trae ??")
                console.log(res.data)
-        
+        this.isLoading=false;
               }).catch(function(err)
                 {
                   console.log(err);
@@ -78,7 +101,7 @@ import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
             console.log("otra cosa");
           }
           console.log(err);
-        
+        this.isLoading=false;
         });
       },
 		},

@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import pokemonService from '@/services/pokemonService'
 
 	export default {
 		data () {
@@ -36,11 +37,10 @@ import axios from 'axios';
 		methods:{
 
 
-		getTipoPokemones: function(){
-          
-          var contexto=this;
-          axios.get(this.$hostname+'/api/v2/type',{
-            })
+		getTipoPokemones(){
+         var contexto = this;
+         console.log("paso 1")
+         this.datosPokemones= pokemonService.getTipos()
               .then((res)=> {
                this.datosPokemones=res.data;
                console.log("olaaaaaaa")
@@ -62,7 +62,45 @@ import axios from 'axios';
           }
           console.log(err);
         
-        });
+        });;
+
+				// console.log("paso 3")               
+    //            console.log("olaaaaaaa")
+    //            console.log(this.datosPokemones)
+
+    //            if(this.datosPokemones.results.length>0){
+    //             this.pokemonSeleccionado=this.datosPokemones.results[0].url;
+    //           }
+
+
+        //   var contexto=this;
+        //   axios.get(this.$hostname+'/api/v2/type',{
+        //     })
+        //       .then((res)=> {
+        //        this.datosPokemones=res.data;
+        //        console.log("olaaaaaaa")
+        //        console.log(this.datosPokemones)
+
+        //        if(this.datosPokemones.results.length>0){
+        //         this.pokemonSeleccionado=this.datosPokemones.results[0].url;
+        //       }
+
+        //        console.log(res.data)
+        
+        //       }).catch(function(err)
+        //         {
+        //           console.log(err);
+        //           if(err.response.status==403){
+        //           contexto.$alert("Por su seguridad, la sesion ha expirado");
+        //   }else{
+        //     console.log("otra cosa");
+        //   }
+        //   console.log(err);
+        
+        // });
+
+
+
       },
 
   

@@ -1,16 +1,15 @@
 <template>
 	<div class="">
     
-		<div class="datos">
+		<div v-if="isLoading==false" class="datos">
 			<div class="picture">
 				<img :src="imagen" class="img-fluid">
 			</div>
 			<div class="data">
 				<span class="titulosCard">{{pokemon.pokemon.name}}</span>
+		
 				<br>
-				<span class="subtitulosCard">Descripción</span>
-				<br>
-				<span class="infoCard">{{pokemon.descripcion}}</span>
+				
 				<br>
 				
 				<span class="subtitulosCard">Habilidades</span>
@@ -42,6 +41,21 @@
 			</div>
 		</div>
 
+		<div>
+            <loading 
+            :active.sync="isLoading" 
+            :can-cancel="true" 
+            :on-cancel="onCancel"
+            :is-full-page="fullPage"
+            :loader="loader"
+            :color="color"
+            :background-color="fondo"
+            > 
+          </loading>
+      </div>
+
+
+
 	<div class="clearfix"></div>
 
 
@@ -54,6 +68,7 @@
 
 <script>
 import axios from 'axios';
+import Loading from 'vue-loading-overlay';
 
 	export default{
 		name: 'Cards',
@@ -62,7 +77,11 @@ import axios from 'axios';
 		data () {
 
 			return {
-
+	loader:'dots',
+      isLoading: false,
+      fullPage: true,
+      color:"#FFFFFF",
+      fondo:"#FFFFFF",
 				optionsPokemon:[], 
 				tipos:[],
 				habilidades:[],
@@ -71,11 +90,16 @@ import axios from 'axios';
 				}
 			},
 
+		components:{
+
+			Loading
+		},
+
 		methods:{
 
 
 		getDatosPokemon: function(){
-          
+          this.isLoading=true;
           var contexto=this;
           axios.get(this.pokemon.pokemon.url,{
             })
@@ -87,6 +111,7 @@ import axios from 'axios';
                // console.log(res.data)
                console.log("las habilidades son: ")
                console.log(this.habilidades)
+               this.isLoading=false;
               }).catch(function(err)
                 {
                   console.log(err);
@@ -96,7 +121,7 @@ import axios from 'axios';
             console.log("otra cosa");
           }
           console.log(err);
-        
+        this.isLoading=false;
         });
       },
 		},
@@ -109,7 +134,7 @@ import axios from 'axios';
 	watch:{
 
 		pokemon: function(){
-
+			this.getDatosPokemon();
 			console.log("obteniendo datos de poke")
 		}
 
