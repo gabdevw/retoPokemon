@@ -45,7 +45,6 @@
             <loading 
             :active.sync="isLoading" 
             :can-cancel="true" 
-            :on-cancel="onCancel"
             :is-full-page="fullPage"
             :loader="loader"
             :color="color"
@@ -67,7 +66,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import pokemonService from '@/services/pokemonService'
 import Loading from 'vue-loading-overlay';
 
 	export default{
@@ -82,7 +81,7 @@ import Loading from 'vue-loading-overlay';
       fullPage: true,
       color:"#FFFFFF",
       fondo:"#FFFFFF",
-				optionsPokemon:[], 
+				
 				tipos:[],
 				habilidades:[],
 				imagen:'',
@@ -101,10 +100,10 @@ import Loading from 'vue-loading-overlay';
 		getDatosPokemon: function(){
           this.isLoading=true;
           var contexto=this;
-          axios.get(this.pokemon.pokemon.url,{
-            })
+               
+           pokemonService.getDatosPokemon(this.pokemon.pokemon.url)    	
               .then((res)=> {
-               this.optionsPokemon=res.data;
+               
                this.imagen=res.data.sprites.front_default;
                this.habilidades=res.data.abilities;
                this.tipos=res.data.types;

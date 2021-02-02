@@ -2,7 +2,7 @@
 	<div class="selectorPokemones">
 		<div class="selector">
 			
-		<select class="form-control form-control-sm" v-model="pokemonSeleccionado">
+		<select class="form-control form-control-sm" v-model="TipoPokemonSeleccionado">
             
             <option v-for="pokemon in datosPokemones.results" v-bind:key="pokemon.url" v-bind:value="pokemon.url">
                                  
@@ -19,8 +19,9 @@
 </template>
 
 <script>
-// import axios from 'axios';
+
 import pokemonService from '@/services/pokemonService'
+
 
 	export default {
 		data () {
@@ -29,7 +30,7 @@ import pokemonService from '@/services/pokemonService'
 	
 				
 				datosPokemones:[],
-				pokemonSeleccionado:'',
+				TipoPokemonSeleccionado:'',
 
 			}
 		},
@@ -39,16 +40,17 @@ import pokemonService from '@/services/pokemonService'
 
 		getTipoPokemones(){
          var contexto = this;
-         console.log("paso 1")
+         
          this.datosPokemones= pokemonService.getTipos()
-              .then((res)=> {
+         .then((res)=> {
+               
                this.datosPokemones=res.data;
-               console.log("olaaaaaaa")
-               console.log(this.datosPokemones)
+               
+                   if(this.datosPokemones.results.length>0){
 
-               if(this.datosPokemones.results.length>0){
-                this.pokemonSeleccionado=this.datosPokemones.results[0].url;
-              }
+                     this.TipoPokemonSeleccionado=this.datosPokemones.results[0].url;
+
+                    }
 
                console.log(res.data)
         
@@ -62,44 +64,7 @@ import pokemonService from '@/services/pokemonService'
           }
           console.log(err);
         
-        });;
-
-				// console.log("paso 3")               
-    //            console.log("olaaaaaaa")
-    //            console.log(this.datosPokemones)
-
-    //            if(this.datosPokemones.results.length>0){
-    //             this.pokemonSeleccionado=this.datosPokemones.results[0].url;
-    //           }
-
-
-        //   var contexto=this;
-        //   axios.get(this.$hostname+'/api/v2/type',{
-        //     })
-        //       .then((res)=> {
-        //        this.datosPokemones=res.data;
-        //        console.log("olaaaaaaa")
-        //        console.log(this.datosPokemones)
-
-        //        if(this.datosPokemones.results.length>0){
-        //         this.pokemonSeleccionado=this.datosPokemones.results[0].url;
-        //       }
-
-        //        console.log(res.data)
-        
-        //       }).catch(function(err)
-        //         {
-        //           console.log(err);
-        //           if(err.response.status==403){
-        //           contexto.$alert("Por su seguridad, la sesion ha expirado");
-        //   }else{
-        //     console.log("otra cosa");
-        //   }
-        //   console.log(err);
-        
-        // });
-
-
+        });
 
       },
 
@@ -118,10 +83,10 @@ import pokemonService from '@/services/pokemonService'
 
 
 		watch:{
-			pokemonSeleccionado: function(){
+			TipoPokemonSeleccionado: function(){
 				
-				console.log(this.pokemonSeleccionado)
-				this.$emit("filtrar", this.pokemonSeleccionado)
+				console.log(this.TipoPokemonSeleccionado)
+				this.$emit("filtrar", this.TipoPokemonSeleccionado)
 			}
 
 

@@ -22,7 +22,6 @@
             <loading 
             :active.sync="isLoading" 
             :can-cancel="true" 
-            :on-cancel="onCancel"
             :is-full-page="fullPage"
             :loader="loader"
             :color="color"
@@ -43,7 +42,8 @@
 
 <script>
 
-import axios from 'axios';
+
+import pokemonService from '@/services/pokemonService'
 import Toolbar from '@/components/Toolbar';
 import Selector from '@/components/Selector';
 import Cards from '@/components/Cards';
@@ -84,14 +84,12 @@ import Loading from 'vue-loading-overlay'
           this.isLoading=true;
           var contexto=this;
           
-          console.log(url)
-          axios.get(url,{
-            })
+          this.optionsPokemon= pokemonService.getTipoPokemones(url)
               .then((res)=> {
                this.optionsPokemon=res.data;
-               console.log("este servicio esta en home y trae ??")
-               console.log(res.data)
-        this.isLoading=false;
+               console.log("este servicio trae pokemones del mismo tipo")
+                console.log(res.data)
+                this.isLoading=false;
               }).catch(function(err)
                 {
                   console.log(err);

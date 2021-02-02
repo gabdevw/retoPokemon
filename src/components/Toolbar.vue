@@ -144,6 +144,7 @@
 
 				
 				this.$router.push({name:'Home'});
+				this.opcionMenu=0;
 			},
 
 			cierraSesion(){
