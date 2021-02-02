@@ -1,5 +1,8 @@
 <template>
 	<div class="">
+
+		<PokemonDetail ref="pokemonDetalle"></PokemonDetail>
+
 		<Toolbar></Toolbar>
 		<Selector @filtrar="getTipoPokemones"></Selector>
 
@@ -10,7 +13,7 @@
 		
 		<div v-for="pokemon in optionsPokemon.pokemon" :key="pokemon.id" v-bind:value="pokemon.value" class="card">
 		
-			<Cards :pokemon="pokemon"></Cards>
+			<Cards @urlPokemon="urlPokemon" :pokemon="pokemon"></Cards>
 		
 		</div>
 
@@ -42,12 +45,14 @@
 
 <script>
 
+var $ = require('jquery')
 
 import pokemonService from '@/services/pokemonService'
 import Toolbar from '@/components/Toolbar';
 import Selector from '@/components/Selector';
 import Cards from '@/components/Cards';
 import TablaPokemonSeleccionado from '@/components/TablaPokemonSeleccionado';
+import PokemonDetail from '@/components/PokemonDetail'
 
 import Loading from 'vue-loading-overlay'
 
@@ -73,11 +78,22 @@ import Loading from 'vue-loading-overlay'
 			Selector,
 			Cards,
 			TablaPokemonSeleccionado,
-			Loading
+			Loading,
+			PokemonDetail
 
 		},
 
 	methods:{
+
+		urlPokemon(url){
+			console.log("veamos que trae el emit")
+			console.log(url)
+
+			this.$refs.pokemonDetalle.dataCompleta(url);
+
+			$('#modalPokemonAdetalle').modal('show');
+
+		},
 
 
 		getTipoPokemones: function(url){

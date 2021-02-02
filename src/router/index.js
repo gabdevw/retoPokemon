@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 //import Home from '../views/Home.vue'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
+import PokemonDetail from '@/components/PokemonDetail'
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,12 @@ const routes = [
     path: '/',
     name: 'Login',
     component: Login
+  },
+
+  {
+    path: '/pokemon-detail',
+    name: 'PokemonDetail',
+    component: PokemonDetail
   },
   {
     path: '/about',

@@ -1,6 +1,6 @@
 <template>
 	<div class="">
-    
+
 		<div v-if="isLoading==false" class="datos">
 			<div class="picture">
 				<img :src="imagen" class="img-fluid">
@@ -36,7 +36,7 @@
 			<div class="opcionesElegir">
 				
 				<span class="subtitulosCard seleccionaPokemon">Escoger pokemon</span>
-				<span class="subtitulosCard detallePokemon">Ver detalle</span>
+				<span v-on:click="detallePokemon(pokemon.pokemon.url)" class="subtitulosCard detallePokemon">Ver detalle</span>
 
 			</div>
 		</div>
@@ -66,8 +66,10 @@
 </template>
 
 <script>
+// var $=require('jquery')
 import pokemonService from '@/services/pokemonService'
 import Loading from 'vue-loading-overlay';
+
 
 	export default{
 		name: 'Cards',
@@ -85,13 +87,16 @@ import Loading from 'vue-loading-overlay';
 				tipos:[],
 				habilidades:[],
 				imagen:'',
+				urlPokemon:''
+				// pokemonAdetalle:[],
 
 				}
 			},
 
 		components:{
 
-			Loading
+			Loading,
+			
 		},
 
 		methods:{
@@ -103,13 +108,14 @@ import Loading from 'vue-loading-overlay';
                
            pokemonService.getDatosPokemon(this.pokemon.pokemon.url)    	
               .then((res)=> {
-               
-               this.imagen=res.data.sprites.front_default;
+               // this.pokemonAdetalle=res.data;
+               // this.imagen=res.data.sprites.front_default;
+               this.imagen=res.data.sprites.other.dream_world.front_default;
                this.habilidades=res.data.abilities;
                this.tipos=res.data.types;
                // console.log(res.data)
-               console.log("las habilidades son: ")
-               console.log(this.habilidades)
+               // console.log("las habilidades son: ")
+               // console.log(this.habilidades)
                this.isLoading=false;
               }).catch(function(err)
                 {
@@ -123,6 +129,18 @@ import Loading from 'vue-loading-overlay';
         this.isLoading=false;
         });
       },
+
+      detallePokemon(url){
+       // console.log(url)
+
+       this.urlPokemon=url;
+       console.log("se copio la url desde card")
+       console.log(this.urlPokemon)
+       this.$emit('urlPokemon', this.urlPokemon);
+
+       
+      }
+
 		},
 
 	created(){

@@ -1,3 +1,10 @@
+.espacioRight{
+	margin-right: 5px;
+}
+.enlinea{
+	display: flex;
+	float: left;
+}
 
 .loaderPokemones{
 	width: 100%;
@@ -38,7 +45,7 @@
 
 .tablaPokemones{
 
-	// width: 100%;
+	width: 100%;
 	cursor: pointer;
 	color: white;	
 	text-align: center;
@@ -47,7 +54,7 @@
 
 .listadoPokemon{
 	margin: 0 auto;
-	width: 80%;
+	width: 100%;
 	padding: 5px;
 	padding-left:10px;
 	padding-right:10px;
@@ -86,6 +93,25 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 	cursor: pointer;
 	border: 1px solid white;
 	border-radius:5px;
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+
+.detallePokemon:hover{
+	padding: 5px;
+	padding-left:10px;
+	padding-right:10px;
+	cursor: pointer;
+	border: 1px solid black;
+	border-radius:5px;
+	color: black;
+	background-color:white;
+
+	 -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
 }
 
 .opcionesElegir{
@@ -118,6 +144,20 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 .infoCard{
 	font-size: 12px;
 	color: white;
+
+
+}
+
+.subtitulosModalPokemon{
+
+	font-size: 16px;
+	color: black;
+	font-weight: 600;
+}
+
+.infoModalPokemon{
+	font-size: 12px;
+	color: black;
 
 
 }
