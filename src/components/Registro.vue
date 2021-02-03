@@ -15,19 +15,34 @@
       
 
 		<label class="espacioUp" for="">E-mail:</label>
-		<input type="text" id="emailId" v-model="user.email" class="form-control">
-
+		<input type="text" v-model="email" class="form-control">
+			<div v-if="correctFormat" class="infoCardblack">
+				Respeta el formato micuenta@correo.com
+			</div>
+		
 		<label class="espacioUp" for="">Contraseña:</label>
-		<input type="password" id="passId" v-model="user.password" class="form-control">
+		<input type="password" v-model="pass" class="form-control">
+
+		<div v-if="minLenghtPass1" class="infoCardblack">
+				Al menos 6 caracteres
+			</div>
 
 		<label class="espacioUp" for="">Confirma contraseña:</label>
-		<input type="password" id="passConfirmaId" v-model="user.passwordConfirma" class="form-control">
+		<input type="password" v-model="passConfirm" class="form-control">
+		<div v-if="minLenghtPass2" class="infoCardblack">
+				Al menos 6 caracteres
+			</div>
+
+		<div v-if="passEquals" class="infoCardblack">
+				Las contraseñas deben coincidir
+			</div>
 	
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="cancelar()" >Cancelar</button>
-        <button type="submit" class="btn btn-success">Registrar</button>
+        <button type="button"  class="btn btn-secondary" v-on:click="cancelar()" >Cancelar</button>
+        
+        <button type="submit" :disabled="isDisabled" class="btn btn-success">Registrar</button>
       </div>
     </div>
   </div>
@@ -42,6 +57,7 @@
 //import db from '@/firebase/init.js'
 import '@/firebase/init.js'
 import firebase from 'firebase'
+import Swal from 'sweetalert2'
 var $=require('jquery')
 
 	export default{
@@ -52,15 +68,17 @@ var $=require('jquery')
 		data(){
 
 			return {
-			
-			user:{
-
-				
+							
+				isDisabled:true,	
 				email:null,
-				password:null,
-				passwordConfirma:null,
+				pass:null,
+				passConfirm:null,
+				correctFormat:false,
+				minLenghtPass1:false,
+				minLenghtPass2:false,
+				passEquals:false
 				
-				}
+				
 			}
 		},
 
@@ -69,49 +87,104 @@ var $=require('jquery')
 
 		methods:{
 
+
+			validacionAparte(){
+
+				var formatoEmail = /^([\da-z_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
+
+
+				if (this.email==null || this.email=='') { 	
+					this.isDisabled=true;
+					this.correctFormat=false;
+					this.minLenghtPass1=false;
+					this.minLenghtPass2=false;
+					this.passEquals=false;
+					
+				}else if (!formatoEmail.test(this.email)){
+					this.isDisabled=true;
+					this.correctFormat=true;
+					this.minLenghtPass1=false;
+					this.minLenghtPass2=false;
+					this.passEquals=false;
+				}else if (this.pass==null || this.pass==''){
+					this.isDisabled=true;
+					this.correctFormat=false;
+					this.minLenghtPass1=false;
+					this.minLenghtPass2=false;
+					this.passEquals=false;
+					
+				}else if (this.pass.length<6){
+					this.isDisabled=true;
+					this.correctFormat=false;
+					this.minLenghtPass1=true;
+					this.minLenghtPass2=false;
+					this.passEquals=false;
+					
+				}else if (this.passConfirm==null || this.passConfirm==''){
+					this.isDisabled=true;
+					this.correctFormat=false;
+					this.minLenghtPass1=false;
+					this.minLenghtPass2=false;
+					this.passEquals=false;
+					
+				}else if (this.passConfirm.length<6){
+					this.isDisabled=true;
+					this.correctFormat=false;
+					this.minLenghtPass1=false;
+					this.minLenghtPass2=true;
+					this.passEquals=false;
+					
+				}else if (this.pass!=this.passConfirm){
+					this.isDisabled=true;
+					this.correctFormat=false;
+					this.minLenghtPass1=false;
+					this.minLenghtPass2=false;
+					this.passEquals=true;
+					
+				}else{
+					this.isDisabled=false;
+					this.correctFormat=false;
+					this.minLenghtPass1=false;
+					this.minLenghtPass2=false;
+					this.passEquals=false;
+
+
+				}
+
+
+			},
+
+
 			valida(){
 
-		$('#emailId').removeClass("campoObligatorio");
-		$('#passId').removeClass("campoObligatorio");
-		$('#passConfirmaId').removeClass("campoObligatorio");
-
-
-		if (this.user.email==null) { 
-
-        // $('#emailId').addClass("campoObligatorio");  
-        $('#emailId').focus();
-
-        }else if (this.user.password==null) { 
-
-        // $('#passId').addClass("campoObligatorio");  
-        $('#passId').focus();
-
-        }else if (this.user.passwordConfirma==null) { 
-
-        // $('#passId').addClass("campoObligatorio");  
-        $('#passConfirmaId').focus();
-
-        }else if (this.user.passwordConfirma!=this.user.password) { 
-
-        // $('#passId').addClass("campoObligatorio");  
-        $('#passConfirmaId').focus();
-
-        }else{
+		
 			console.log("enviando formulariooo");
-            console.log(this.user)
-			console.log("enviando formulario");
-		firebase.auth().createUserWithEmailAndPassword(this.user.email,this.user.password)
+			
+			firebase.auth().createUserWithEmailAndPassword(this.email,this.pass)
 
 
-		.then(user=>{
-			alert("Registrado exitosamente")
+			.then(user=>{
+
+				Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Registrado exitosamente',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
+
 			this.cancelar();
 			console.log(user)
 		}).catch(err => {
 			console.log(err);
-			alert("Error verifique los campos")
+			Swal.fire({
+  icon: 'error',
+  title: 'Algo salio mal',
+  text: err,
+  
+})
 		});
-        }
+        
 
 
 
@@ -131,7 +204,25 @@ var $=require('jquery')
     },
 
 
-		}
+		},
+
+
+			watch:{
+
+			email: function(){
+				this.validacionAparte();
+
+			},
+
+			pass: function(){
+				this.validacionAparte();
+
+			},
+			passConfirm: function(){
+				this.validacionAparte();
+
+			}
+		},
 
 	}
 </script>
