@@ -3,14 +3,14 @@
 	<div class="">
 		
 	
-	<div class="toolbar">
+	<div v-bind:class="$store.state.classObject" class="toolbar">
 		
 		<label class="userTag" for="">
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="iconPerson bi bi-person-circle" viewBox="0 0 16 16">
 			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
 			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
 			</svg>
-			Bienvenid@ {{user}}
+			Bienvenid@
 		</label>
 		
 
@@ -23,7 +23,7 @@
 				<li v-on:click="redirigeHome()">Home</li>
 				<li v-on:click="redirigeHome()">Habilidades</li>
 				<li v-on:click="cierraSesion()">Cerrar sesión</li>
-				<li class="modo">Modo oscuro</li>
+				<li v-on:click="modoOscuro()" class="modo">Modo oscuro</li>
 			</ul>
 
 
@@ -39,7 +39,7 @@
 
 	</div>
 	<transition name="slide-fade">
-	<div v-if="opcionMenu==1" class="menuResponsive">
+	<div v-if="opcionMenu==1" class="menuResponsive" v-bind:class="$store.state.classObject">
 		
 		
 			
@@ -48,7 +48,7 @@
 			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
 			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
 			</svg>
-			Bienvenid@ {{user}}
+			Bienvenid@ 
 		</label>
 
 		<br>
@@ -82,7 +82,7 @@
 
 		<br>
 
-		<label class="modo modoRes" for="">
+		<label v-on:click="modoOscuro()" class="modo modoRes" for="">
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-brightness-low-fill" viewBox="0 0 16 16">
   <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"/>
 </svg>
@@ -111,8 +111,15 @@
 		data(){
 			return {
 
+			
+				// classObject: {
+    //                    active: true,
+    //                    toolbarWhite: false,
+    //                    menuResponsiveWhite: false
+    //             },
 				user:'',
-				opcionMenu:'0'
+				opcionMenu:'0',
+				
 			}
 		},
 
@@ -122,6 +129,13 @@
 		},
 
 		methods:{
+
+			modoOscuro(){
+
+				this.$store.dispatch('activaModoAction');
+
+
+			},
 
 			activaMenu(){
 

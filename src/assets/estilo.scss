@@ -257,6 +257,7 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 
 }
 
+
 .menuResponsive{
 	display: none;
 	background-color:#003179;
@@ -408,8 +409,16 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 
 }
 
+.allWhite{
+
+	background-color:white;
+	color: black;
+
+}
+
 
 @media (min-width: 1200px) and (max-width: 1281px) {
+
 
 .seleccionaPokemon{
 
@@ -417,10 +426,19 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 	cursor: pointer;
 }
 
+.allWhite{
+
+	background-color:white;
+	color: black;
+
+}
+
 
 }
 
 @media (min-width: 960px) and (max-width: 1200px) {
+
+
 
 .seleccionaPokemon{
 
@@ -594,6 +612,12 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 
 }
 
+.allWhite{
+
+	background-color:white;
+	color: black;
+
+}
 
 }
 
@@ -702,6 +726,8 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 }
 
 
+
+
 .userTag{
 
 	padding: 20px;
@@ -764,6 +790,14 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 	display: none;
 
 }
+
+.allWhite{
+
+	background-color:white;
+	color: black;
+
+}
+
 
 
 }
@@ -874,6 +908,7 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 }
 
 
+
 .iconMenu{
 
 	display: flex;
@@ -918,6 +953,15 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 	display: none;
 
 }
+
+.allWhite{
+
+	background-color:white;
+	color: black;
+
+}
+
+
 
 }
 @media (min-width: 300px) and (max-width: 550px) {
@@ -1023,6 +1067,7 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 }
 
 
+
 .iconMenu{
 
 	display: flex;
@@ -1066,6 +1111,13 @@ box-shadow: 6px 9px 16px 1px rgba(0,0,0,0.75);
 .items{
 
 	display: none;
+
+}
+
+.allWhite{
+
+	background-color:white;
+	color: black;
 
 }
 

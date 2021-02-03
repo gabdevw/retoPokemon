@@ -11,7 +11,7 @@
 			
 		<div v-if="isLoading==false" class="contenedorCards">
 		
-		<div v-for="pokemon in optionsPokemon.pokemon" :key="pokemon.id" v-bind:value="pokemon.value" class="card">
+		<div v-for="pokemon in optionsPokemon.pokemon" :key="pokemon.id" v-bind:class="$store.state.classObject" v-bind:value="pokemon.value" class="card">
 		
 			<Cards @urlPokemonAdd="addPokemon" @urlPokemon="urlPokemon" :pokemon="pokemon"></Cards>
 		
@@ -39,7 +39,7 @@
       </div>
 
 	
-		<div class="tablaPokemonSeleccionado">
+		<div :class="$store.state.classObject" class="tablaPokemonSeleccionado">
 			
 		<TablaPokemonSeleccionado @urlPokemon="urlPokemon" @filtrar="getTipoPokemones" ref="tablaPokemones"></TablaPokemonSeleccionado>
 		</div>

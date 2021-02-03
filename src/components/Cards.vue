@@ -6,26 +6,26 @@
 				<img :src="imagen" class="img-fluid">
 			</div>
 			<div class="data">
-				<span class="titulosCard">{{pokemon.pokemon.name}}</span>
+				<span class="titulosCard" :class="$store.state.classObject">{{pokemon.pokemon.name}}</span>
 		
 				<br>
 				
 				<br>
 				
-				<span class="subtitulosCard">Habilidades</span>
+				<span :class="$store.state.classObject" class="subtitulosCard">Habilidades</span>
 				<br>
 				<div class="" v-for="habilidad in habilidades" :key="habilidad.url" v-bind:value="habilidad.url">
 					
-				<span class="infoCard">{{habilidad.ability.name}}</span>
+				<span :class="$store.state.classObject" class="infoCard">{{habilidad.ability.name}}</span>
 				<br>	
 				</div>
 				<br>
 				
-				<span class="subtitulosCard">Tipo</span>
+				<span :class="$store.state.classObject" class="subtitulosCard">Tipo</span>
 				<br>
 				<div class="" v-for="tipo in tipos" :key="tipo.id" v-bind:value="tipo.value">
 					
-				<span class="infoCard">{{tipo.type.name}}</span>
+				<span :class="$store.state.classObject" class="infoCard">{{tipo.type.name}}</span>
 				<br>	
 				</div>
 
@@ -35,9 +35,9 @@
 
 			<div class="opcionesElegir">
 				
-				<span v-on:click="agregaPokemon(pokemon.pokemon.url, pokemon.pokemon.name)" class="subtitulosCard seleccionaPokemon">Escoger pokemon</span>
+				<span v-on:click="agregaPokemon(pokemon.pokemon.url, pokemon.pokemon.name)" :class="$store.state.classObject" class="subtitulosCard seleccionaPokemon">Escoger pokemon</span>
 
-				<span v-on:click="detallePokemon(pokemon.pokemon.url)" class="subtitulosCard detallePokemon">Ver detalle</span>
+				<span v-on:click="detallePokemon(pokemon.pokemon.url)" :class="$store.state.classObject" class="subtitulosCard detallePokemon">Ver detalle</span>
 
 			</div>
 		</div>
