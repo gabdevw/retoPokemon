@@ -1,7 +1,7 @@
 <template>
 	<div class="">
 
-		<div v-if="isLoading==false" class="datos">
+		<div class="datos">
 			<div class="picture">
 				<img :src="imagen" class="img-fluid">
 			</div>
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 
-		<div>
+		<!-- <div>
             <loading 
             :active.sync="isLoading" 
             :can-cancel="true" 
@@ -51,7 +51,7 @@
             :background-color="fondo"
             > 
           </loading>
-      </div>
+      </div> -->
 
 
 
@@ -68,7 +68,7 @@
 <script>
 // var $=require('jquery')
 import pokemonService from '@/services/pokemonService'
-import Loading from 'vue-loading-overlay';
+// import Loading from 'vue-loading-overlay';
 
 
 	export default{
@@ -78,11 +78,11 @@ import Loading from 'vue-loading-overlay';
 		data () {
 
 			return {
-	loader:'dots',
-      isLoading: false,
-      fullPage: true,
-      color:"#FFFFFF",
-      fondo:"#FFFFFF",
+	// loader:'dots',
+ //      isLoading: false,
+ //      fullPage: true,
+ //      color:"#FFFFFF",
+ //      fondo:"#FFFFFF",
 				
 				tipos:[],
 				habilidades:[],
@@ -95,7 +95,7 @@ import Loading from 'vue-loading-overlay';
 
 		components:{
 
-			Loading,
+			// Loading,
 			
 		},
 

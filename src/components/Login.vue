@@ -11,14 +11,20 @@
 			<br>
 			<br>
 			<label class="subtitulos" for="">E-mail</label>
-			<input type="text" id="userIdr" v-model="user" class="form-control cajaInput" >
+			<input type="text" id="userIdr" v-model="user" class="form-control cajaInput">
+			
+
+			<div v-if="correctFormat" class="infoCard">
+				Respeta el formato micuenta@correo.com
+			</div>
 
 			<label class="subtitulos espacioUp" for="">Contraseña</label>
 			<input type="password" id="passIdr" v-model="pass" class="form-control cajaInput" >
 
+
 			<br>
 
-			<button type="submit" class="botonEnviar form-control btn btn-primary">Iniciar sesión</button>
+			<button type="submit" :disabled="isDisabled" class="botonEnviar form-control btn btn-primary">Iniciar sesión</button>
 
 			<button v-on:click="registrar()" type="button" class="form-control btn btn-success registro subtitulos">Registrarse</button>
 		
@@ -38,6 +44,7 @@ var $=require('jquery')
 import '@/firebase/init.js'
 import firebase from 'firebase'
 import Registro from '@/components/Registro';
+import Swal from 'sweetalert2'
 
 	export default{
 	name:'Login',
@@ -45,8 +52,9 @@ import Registro from '@/components/Registro';
 		data() {
 
 			return{
-
-				user:null,
+				correctFormat:false,
+				isDisabled:true,				
+				user:null,	
 				pass:null
 			}
 		},
@@ -58,37 +66,54 @@ import Registro from '@/components/Registro';
 
 			validaCredenciales(){
 
-		
-		$('#userIdr').removeClass("campoObligatorio");
-		$('#passIdr').removeClass("campoObligatorio");
+		console.log("validacion pasada");
 
-
-		if (this.user==null) { 
-
-        // $('#emailId').addClass("campoObligatorio");  
-        $('#userIdr').focus();
-
-        }else if (this.pass==null) { 
-
-        // $('#passId').addClass("campoObligatorio");  
-        $('#passIdr').focus();
-
-        }else{
-			console.log("loguenado");
-			console.log(this.user)
-			console.log(this.pass)
-			firebase.auth().signInWithEmailAndPassword(this.user,this.pass)
+		firebase.auth().signInWithEmailAndPassword(this.user,this.pass)
 		.then(user=>{
 			console.log(user)
 			localStorage.setItem('isAutenticade', true);
 			this.$router.push({name:'Home'});
 		}).catch(err => {
-			alert("error verifique campos")
-			console.log(err);
-		});
-        
-        }
 
+			
+			
+			Swal.fire({
+  icon: 'error',
+  title: 'Algo salio mal',
+  text: err,
+  
+})
+
+			console.log(err);
+
+		});
+
+
+			},
+
+
+			validacionAparte(){
+
+				var formatoEmail = /^([\da-z_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
+
+
+				if (this.user==null || this.user=='') { 	
+					this.isDisabled=true;
+					this.correctFormat=false;
+					
+				}else if (!formatoEmail.test(this.user)){
+					this.isDisabled=true;
+					this.correctFormat=true;
+				}else if (this.pass==null || this.pass==''){
+					this.isDisabled=true;
+					this.correctFormat=false;
+					
+				}else{
+					this.isDisabled=false;
+					this.correctFormat=false;
+
+
+				}
 
 
 			},
@@ -100,6 +125,7 @@ import Registro from '@/components/Registro';
 			}
 		},
 
+
 		created(){
 
 			if (localStorage.getItem('isAutenticade')=='true') {
@@ -107,6 +133,19 @@ import Registro from '@/components/Registro';
 			this.$router.push({name:'Home'});	
 		}
 
+		},
+
+		watch:{
+
+			user: function(){
+				this.validacionAparte();
+
+			},
+
+			pass: function(){
+				this.validacionAparte();
+
+			}
 		},
 
 

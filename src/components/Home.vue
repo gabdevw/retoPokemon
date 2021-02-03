@@ -18,11 +18,16 @@
 		</div>
 
 		</div>
-		<div class="container">
 
+		<div class="loaderpoke" v-if="isLoading==false && existPokemons==0">
+        <h5 class="titulos">No hay datos para mostrar</h5> 
+        </div>
 		
-		<div>
-            <loading 
+		
+		<div v-else class="loaderpoke">
+			
+            <loading
+
             :active.sync="isLoading" 
             :can-cancel="true" 
             :is-full-page="fullPage"
@@ -33,7 +38,7 @@
           </loading>
       </div>
 
-	</div>
+	
 		<div class="tablaPokemonSeleccionado">
 			
 		<TablaPokemonSeleccionado></TablaPokemonSeleccionado>
@@ -68,7 +73,8 @@ import Loading from 'vue-loading-overlay'
       fondo:"#FFFFFF",
 				optionsPokemon:[],
 				user:null,
-				modoOscuro:false
+				modoOscuro:false,
+				existPokemons:''
 
 			}
 		},
@@ -80,6 +86,7 @@ import Loading from 'vue-loading-overlay'
 			TablaPokemonSeleccionado,
 			Loading,
 			PokemonDetail
+
 
 		},
 
@@ -105,6 +112,11 @@ import Loading from 'vue-loading-overlay'
                this.optionsPokemon=res.data;
                console.log("este servicio trae pokemones del mismo tipo")
                 console.log(res.data)
+                if(res.data.pokemon.length==0){
+
+                    console.log("no trae nada")
+                    this.existPokemons=0;
+                }	
                 this.isLoading=false;
               }).catch(function(err)
                 {
