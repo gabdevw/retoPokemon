@@ -4,8 +4,11 @@ import router from './router'
 import store from './store'
 import api from 'axios';
 import Vuelidate from 'vuelidate'
+import vmodal from 'vue-js-modal'
+
 // import VueSweetalert2 from 'vue-sweetalert2';
 
+Vue.use(vmodal)
 Vue.use(Vuelidate)
 // Vue.use(VueSweetalert2)
 

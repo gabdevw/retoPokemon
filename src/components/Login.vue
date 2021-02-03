@@ -1,7 +1,18 @@
 <template>
 	<div class="">
-	<Registro></Registro>
+	
+	<Modal name="modalRegistrarse"
+		:width="400"
+		:height="470"
+        :clickToClose="false"
+        :adaptive="true"
+        :scrollable="true"
+        :focusTrap="true"
+	> 
 
+		<Registro></Registro>
+
+	</Modal>
 		<div class="loginBox">
 			
 		<form @submit.prevent="validaCredenciales()">
@@ -40,7 +51,7 @@
 <script>
 
 
-var $=require('jquery')
+
 import '@/firebase/init.js'
 import firebase from 'firebase'
 import Registro from '@/components/Registro';
@@ -52,6 +63,7 @@ import Swal from 'sweetalert2'
 		data() {
 
 			return{
+
 				correctFormat:false,
 				isDisabled:true,				
 				user:null,	
@@ -120,10 +132,14 @@ import Swal from 'sweetalert2'
 
 			registrar(){
 
-				$('#modalRegistro').modal('show');
+				console.log()
+				this.$modal.show('modalRegistrarse')
+				// $('#modalRegistro').modal('show');
+				// this.$modal.show('modalRegistro');
 
 			}
 		},
+
 
 
 		created(){

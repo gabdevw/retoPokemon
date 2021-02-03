@@ -1,13 +1,13 @@
 <template>
-	<div class="">
+	<div class="container">
+
 <form @submit.prevent="valida()">
 	
-<div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" v-on:click="cancelar()" >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -46,7 +46,7 @@
       </div>
     </div>
   </div>
-</div>
+
 
 </form>
 	</div>
@@ -54,11 +54,11 @@
 </template>
 
 <script>
-//import db from '@/firebase/init.js'
+
 import '@/firebase/init.js'
 import firebase from 'firebase'
 import Swal from 'sweetalert2'
-var $=require('jquery')
+
 
 	export default{
 		name:'Registro',
@@ -191,9 +191,9 @@ var $=require('jquery')
 			},
 
 	cancelar(){
-
+		this.$modal.hide('modalRegistrarse')
 		this.reset();
-		$('#modalRegistro').modal('hide');
+		
 	},
 
 
