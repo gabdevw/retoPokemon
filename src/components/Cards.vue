@@ -35,40 +35,22 @@
 
 			<div class="opcionesElegir">
 				
-				<span class="subtitulosCard seleccionaPokemon">Escoger pokemon</span>
+				<span v-on:click="agregaPokemon(pokemon.pokemon.name)" class="subtitulosCard seleccionaPokemon">Escoger pokemon</span>
+
 				<span v-on:click="detallePokemon(pokemon.pokemon.url)" class="subtitulosCard detallePokemon">Ver detalle</span>
 
 			</div>
 		</div>
 
-		<!-- <div>
-            <loading 
-            :active.sync="isLoading" 
-            :can-cancel="true" 
-            :is-full-page="fullPage"
-            :loader="loader"
-            :color="color"
-            :background-color="fondo"
-            > 
-          </loading>
-      </div> -->
-
-
-
 	<div class="clearfix"></div>
 
 
-	
-
-
-<!-- </div> -->
 </div>
 </template>
 
 <script>
-// var $=require('jquery')
 import pokemonService from '@/services/pokemonService'
-// import Loading from 'vue-loading-overlay';
+
 
 
 	export default{
@@ -78,28 +60,34 @@ import pokemonService from '@/services/pokemonService'
 		data () {
 
 			return {
-	// loader:'dots',
- //      isLoading: false,
- //      fullPage: true,
- //      color:"#FFFFFF",
- //      fondo:"#FFFFFF",
+
 				
 				tipos:[],
 				habilidades:[],
 				imagen:'',
-				urlPokemon:''
-				// pokemonAdetalle:[],
+				urlPokemon:'',
+				namePokemon:''
+				
 
 				}
 			},
 
 		components:{
-
-			// Loading,
 			
 		},
 
 		methods:{
+
+
+	agregaPokemon(nombre){
+
+       
+      this.namePokemon=nombre;
+       console.log("se copio nombre desde card")
+       console.log(this.namePokemon)
+       this.$emit('namePokemon', this.namePokemon);
+        
+      },
 
 
 		getDatosPokemon: function(){

@@ -13,7 +13,7 @@
 		
 		<div v-for="pokemon in optionsPokemon.pokemon" :key="pokemon.id" v-bind:value="pokemon.value" class="card">
 		
-			<Cards @urlPokemon="urlPokemon" :pokemon="pokemon"></Cards>
+			<Cards @namePokemon="namePokemon" @urlPokemon="urlPokemon" :pokemon="pokemon"></Cards>
 		
 		</div>
 
@@ -41,7 +41,7 @@
 	
 		<div class="tablaPokemonSeleccionado">
 			
-		<TablaPokemonSeleccionado></TablaPokemonSeleccionado>
+		<TablaPokemonSeleccionado @filtrar="getTipoPokemones" ref="tablaPokemones"></TablaPokemonSeleccionado>
 		</div>
 		
 		
@@ -91,6 +91,15 @@ import Loading from 'vue-loading-overlay'
 		},
 
 	methods:{
+
+		
+		namePokemon(name){
+			console.log("veamos que trae el emit")
+			console.log(name)
+
+			this.$refs.tablaPokemones.agregaPokemon(name);	
+
+		},
 
 		urlPokemon(url){
 			console.log("veamos que trae el emit")
