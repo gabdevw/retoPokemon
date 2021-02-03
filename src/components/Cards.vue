@@ -35,7 +35,7 @@
 
 			<div class="opcionesElegir">
 				
-				<span v-on:click="agregaPokemon(pokemon.pokemon.name)" class="subtitulosCard seleccionaPokemon">Escoger pokemon</span>
+				<span v-on:click="agregaPokemon(pokemon.pokemon.url, pokemon.pokemon.name)" class="subtitulosCard seleccionaPokemon">Escoger pokemon</span>
 
 				<span v-on:click="detallePokemon(pokemon.pokemon.url)" class="subtitulosCard detallePokemon">Ver detalle</span>
 
@@ -66,7 +66,12 @@ import pokemonService from '@/services/pokemonService'
 				habilidades:[],
 				imagen:'',
 				urlPokemon:'',
-				namePokemon:''
+				namePokemon:'',
+				pokemonFull:{
+
+					name:'',
+					url:''
+				}
 				
 
 				}
@@ -79,13 +84,19 @@ import pokemonService from '@/services/pokemonService'
 		methods:{
 
 
-	agregaPokemon(nombre){
+	agregaPokemon(url, nombre){
 
        
-      this.namePokemon=nombre;
-       console.log("se copio nombre desde card")
-       console.log(this.namePokemon)
-       this.$emit('namePokemon', this.namePokemon);
+      this.urlPokemon=url;
+       console.log("se copio nombre de url desde card")
+       console.log(this.urlPokemon)
+       console.log(nombre)
+
+       this.pokemonFull.name=nombre
+       this.pokemonFull.url=this.urlPokemon
+       console.log("Se lleno el arrgleo?")
+       console.log(this.pokemonFull)
+       this.$emit('urlPokemonAdd', this.pokemonFull);
         
       },
 
