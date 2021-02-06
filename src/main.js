@@ -5,12 +5,28 @@ import store from './store'
 import api from 'axios';
 import Vuelidate from 'vuelidate'
 import vmodal from 'vue-js-modal'
+import ApolloClient from 'apollo-boost'
+import VueApollo from 'vue-apollo'
 
 // import VueSweetalert2 from 'vue-sweetalert2';
 
+Vue.use(VueApollo)
 Vue.use(vmodal)
 Vue.use(Vuelidate)
 // Vue.use(VueSweetalert2)
+// HTTP connection to the API
+
+
+const apolloClient = new ApolloClient({
+  // You should use an absolute URL here
+  uri: 'https://rickandmortyapi.com/graphql'
+})
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
+
+
 
 api.defaults.timeout = 10000;
 api.interceptors.request.use(
@@ -82,5 +98,7 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  apolloClient,
+  apolloProvider,
   render: h => h(App)
 }).$mount('#app')

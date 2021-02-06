@@ -21,7 +21,7 @@
 		
 			<ul class="items">
 				<li v-on:click="redirigeHome()">Home</li>
-				<li v-on:click="redirigeHome()">Habilidades</li>
+				<li v-on:click="redirigeRM()">Rick&Morty</li>
 				<li v-on:click="cierraSesion()">Cerrar sesión</li>
 				<li v-on:click="modoOscuro()" class="modo">Modo oscuro</li>
 			</ul>
@@ -159,6 +159,13 @@
 				
 				this.$router.push({name:'Home'});
 				this.opcionMenu=0;
+			},
+
+			redirigeRM(){
+
+				this.$router.push({name:'RickMorthy'});
+				this.opcionMenu=0;
+
 			},
 
 			cierraSesion(){
